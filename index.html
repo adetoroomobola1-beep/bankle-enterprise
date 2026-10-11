@@ -1,0 +1,687 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="theme-color" content="#083565">
+  <title>BANKLE DDI NIG LTD - Enterprise System</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<div class="app-shell">
+
+  <header class="topbar">
+    <div class="window-title">
+      <span class="brand-mark">B</span>
+      <span>BANKLE DDI NIG LTD - Enterprise System</span>
+    </div>
+    <div class="window-controls">
+      <button type="button">—</button>
+      <button type="button">□</button>
+      <button type="button">×</button>
+    </div>
+  </header>
+
+  <div class="menu-bar">
+    <button type="button">File</button>
+    <button type="button">Records</button>
+    <button type="button">Reports</button>
+    <button type="button">Settings</button>
+    <button type="button">Backup</button>
+    <button type="button">Help</button>
+  </div>
+
+  <div class="workspace">
+
+    <aside class="sidebar">
+      <div class="brand-block">
+        <div class="large-logo">B</div>
+        <h2>BANKLE DDI</h2>
+        <h3>NIG LTD</h3>
+        <p>Drinks Distribution. More Value.</p>
+      </div>
+
+      <nav class="side-nav">
+        <button class="side-link active" data-page="dashboard">⌂ Dashboard</button>
+        <button class="side-link" data-page="inventory">▣ Inventory</button>
+        <button class="side-link" data-page="sales">🛒 Sales</button>
+        <button class="side-link" data-page="customers">♟ Customers</button>
+        <button class="side-link" data-page="suppliers">🚚 Suppliers</button>
+        <button class="side-link" data-page="purchases">🛍 Purchases</button>
+        <button class="side-link" data-page="deliveries">🚛 Deliveries</button>
+        <button class="side-link" data-page="expenses">▤ Expenses</button>
+        <button class="side-link" data-page="staff">♙ Staff</button>
+        <button class="side-link" data-page="reports">▥ Reports</button>
+        <button class="side-link" data-page="settings">⚙ Settings</button>
+      </nav>
+
+      <div class="sidebar-bottom">
+        <p>Building a stronger<br>future together</p>
+        <div class="gold-line"></div>
+      </div>
+    </aside>
+
+    <main class="main-content">
+
+      <section id="dashboard" class="page active">
+        <div class="page-heading">
+          <h1>Dashboard</h1>
+          <div class="date-display" id="dashboardDate">Business Overview</div>
+        </div>
+
+        <div class="stats-grid">
+          <article class="stat-card">
+            <div class="stat-icon blue-icon">▥</div>
+            <div>
+              <h3>Total Sales (Today)</h3>
+              <strong id="todaySales">₦0.00</strong>
+              <p>Recorded sales revenue</p>
+            </div>
+          </article>
+
+          <article class="stat-card">
+            <div class="stat-icon green-icon">▣</div>
+            <div>
+              <h3>Payments Received</h3>
+              <strong id="todayPayments">₦0.00</strong>
+              <p>Payments received today</p>
+            </div>
+          </article>
+
+          <article class="stat-card">
+            <div class="stat-icon red-icon">♟</div>
+            <div>
+              <h3>Outstanding Debts</h3>
+              <strong id="totalDebt">₦0.00</strong>
+              <p>Unpaid customer balances</p>
+            </div>
+          </article>
+
+          <article class="stat-card">
+            <div class="stat-icon orange-icon">▤</div>
+            <div>
+              <h3>Total Expenses (Today)</h3>
+              <strong id="todayExpenses">₦0.00</strong>
+              <p>Recorded expenses today</p>
+            </div>
+          </article>
+        </div>
+                <div class="dashboard-columns">
+
+          <section class="content-panel recent-sales-panel">
+            <div class="panel-heading">
+              <h2>🛒 Recent Sales</h2>
+              <button type="button" class="small-button" data-page="sales">
+                View Sales
+              </button>
+            </div>
+
+            <div class="table-wrapper">
+              <table>
+                <thead>
+                  <tr>
+                    <th>Date</th>
+                    <th>Customer</th>
+                    <th>Product</th>
+                    <th>Qty</th>
+                    <th>Total</th>
+                    <th>Paid</th>
+                    <th>Balance</th>
+                  </tr>
+                </thead>
+                <tbody id="dashboardSalesRows">
+                  <tr>
+                    <td colspan="7">No sales recorded yet.</td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+          </section>
+
+          <section class="content-panel stock-panel">
+            <div class="panel-heading">
+              <h2>📦 Inventory Stock</h2>
+              <button type="button" class="small-button"
+                data-page="inventory">View Stock</button>
+            </div>
+
+            <div class="table-wrapper">
+              <table>
+                <thead>
+                  <tr>
+                    <th>Product</th>
+                    <th>Unit</th>
+                    <th>Stock</th>
+                    <th>Status</th>
+                  </tr>
+                </thead>
+                <tbody id="dashboardStockRows">
+                  <tr>
+                    <td colspan="4">No products added yet.</td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+          </section>
+
+          <section class="content-panel financial-panel">
+            <div class="panel-heading">
+              <h2>💰 Financial Summary</h2>
+            </div>
+
+            <div class="summary-row">
+              <span>Total Sales Today</span>
+              <strong id="summarySales">₦0.00</strong>
+            </div>
+            <div class="summary-row">
+              <span>Payments Received Today</span>
+              <strong id="summaryPayments">₦0.00</strong>
+            </div>
+            <div class="summary-row">
+              <span>Outstanding Debts</span>
+              <strong id="summaryDebt">₦0.00</strong>
+            </div>
+            <div class="summary-row">
+              <span>Total Expenses Today</span>
+              <strong id="summaryExpenses">₦0.00</strong>
+            </div>
+            <div class="summary-row highlight-row">
+              <span>Estimated Profit</span>
+              <strong id="summaryProfit">₦0.00</strong>
+            </div>
+
+            <button type="button" class="text-button"
+              data-page="reports">View Detailed Reports →</button>
+          </section>
+
+          <section class="content-panel activity-panel">
+            <div class="panel-heading">
+              <h2>📋 Latest Activity</h2>
+            </div>
+
+            <div id="recentActivity">
+              <p>Your business activity will appear here.</p>
+            </div>
+          </section>
+
+          <section class="content-panel quick-panel">
+            <div class="panel-heading">
+              <h2>⚡ Quick Actions</h2>
+            </div>
+
+            <div class="quick-actions">
+              <button type="button" data-page="sales">🛒 Record Sale</button>
+              <button type="button" data-page="purchases">🚚 Add Purchase</button>
+              <button type="button" data-page="customers">♟ Add Customer</button>
+              <button type="button" data-page="suppliers">👥 Add Supplier</button>
+              <button type="button" data-page="expenses">▤ Record Expense</button>
+              <button type="button" data-page="reports">▥ Generate Report</button>
+            </div>
+
+            <button type="button" id="backupButton" class="backup-button">
+              💾 Backup Data
+            </button>
+          </section>
+
+        </div>
+      </section>
+
+      <!-- INVENTORY -->
+      <section id="inventory" class="page">
+        <div class="page-heading">
+          <h1>Inventory Management</h1>
+        </div>
+
+        <section class="content-panel">
+          <h2>Add New Product</h2>
+
+          <form id="productForm">
+            <label>Product Name
+              <input name="name" required placeholder="e.g. Viju">
+            </label>
+
+            <label>Size / Unit
+              <input name="unit" required placeholder="e.g. 50cl">
+            </label>
+
+            <label>Opening Stock
+              <input name="qty" type="number" min="0"
+                step="1" required>
+            </label>
+
+            <label>Cost Price (₦)
+              <input name="cost" type="number" min="0"
+                step="0.01" required>
+            </label>
+
+            <label>Selling Price (₦)
+              <input name="price" type="number" min="0"
+                step="0.01" required>
+            </label>
+
+            <label>Low Stock Alert
+              <input name="lowStock" type="number" min="0"
+                step="1" value="10">
+            </label>
+
+            <button type="submit">Save Product</button>
+          </form>
+        </section>
+
+        <section class="content-panel">
+          <h2>Product Stock List</h2>
+
+          <div class="table-wrapper">
+            <table>
+              <thead>
+                <tr>
+                  <th>Product</th>
+                  <th>Unit</th>
+                  <th>Stock</th>
+                  <th>Cost Price</th>
+                  <th>Selling Price</th>
+                  <th>Stock Value</th>
+                </tr>
+              </thead>
+              <tbody id="inventoryRows"></tbody>
+            </table>
+          </div>
+        </section>
+      </section>
+
+      <!-- SALES -->
+      <section id="sales" class="page">
+        <div class="page-heading">
+          <h1>Sales &amp; Customer Orders</h1>
+        </div>
+
+        <section class="content-panel">
+          <h2>Record a Sale</h2>
+
+          <form id="saleForm">
+            <label>Customer
+              <select name="customer" id="saleCustomer" required></select>
+            </label>
+
+            <label>Product
+              <select name="product" id="saleProduct" required></select>
+            </label>
+
+            <label>Quantity
+              <input name="qty" type="number" min="1"
+                step="1" required>
+            </label>
+
+            <label>Unit Selling Price (₦)
+              <input name="price" type="number" min="0"
+                step="0.01" required>
+            </label>
+
+            <label>Amount Paid (₦)
+              <input name="paid" type="number" min="0"
+                step="0.01" value="0" required>
+            </label>
+
+            <label>Payment Method
+              <select name="method">
+                <option value="Cash">Cash</option>
+                <option value="Transfer">Bank Transfer</option>
+                <option value="POS">POS</option>
+                <option value="Credit">Credit / Pay Later</option>
+              </select>
+            </label>
+
+            <button type="submit">Save Sale</button>
+          </form>
+        </section>
+
+        <section class="content-panel">
+          <h2>Sales Records</h2>
+
+          <div class="table-wrapper">
+            <table>
+              <thead>
+                <tr>
+                  <th>Date</th>
+                  <th>Customer</th>
+                  <th>Product</th>
+                  <th>Qty</th>
+                  <th>Total</th>
+                  <th>Paid</th>
+                  <th>Balance</th>
+                </tr>
+              </thead>
+              <tbody id="salesRows"></tbody>
+            </table>
+          </div>
+        </section>
+      </section>
+            <!-- CUSTOMERS -->
+      <section id="customers" class="page">
+        <div class="page-heading">
+          <h1>Customer Accounts</h1>
+        </div>
+
+        <section class="content-panel">
+          <h2>Add Customer</h2>
+          <form id="customerForm">
+            <label>Customer / Shop Name
+              <input name="name" required>
+            </label>
+
+            <label>Phone Number
+              <input name="phone" type="tel">
+            </label>
+
+            <label>Address
+              <input name="address">
+            </label>
+
+            <button type="submit">Save Customer</button>
+          </form>
+        </section>
+
+        <section class="content-panel">
+          <h2>Customer List &amp; Debts</h2>
+          <div class="table-wrapper">
+            <table>
+              <thead>
+                <tr>
+                  <th>Customer</th>
+                  <th>Phone</th>
+                  <th>Address</th>
+                  <th>Outstanding Debt</th>
+                  <th>Action</th>
+                </tr>
+              </thead>
+              <tbody id="customerRows"></tbody>
+            </table>
+          </div>
+        </section>
+      </section>
+
+      <!-- SUPPLIERS -->
+      <section id="suppliers" class="page">
+        <div class="page-heading">
+          <h1>Supplier Management</h1>
+        </div>
+
+        <section class="content-panel">
+          <h2>Add Supplier</h2>
+          <form id="supplierForm">
+            <label>Supplier Name
+              <input name="name" required>
+            </label>
+
+            <label>Phone Number
+              <input name="phone" type="tel">
+            </label>
+
+            <label>Address
+              <input name="address">
+            </label>
+
+            <button type="submit">Save Supplier</button>
+          </form>
+        </section>
+
+        <section class="content-panel">
+          <h2>Supplier List</h2>
+          <div id="supplierList"></div>
+        </section>
+      </section>
+
+      <!-- PURCHASES -->
+      <section id="purchases" class="page">
+        <div class="page-heading">
+          <h1>Stock Purchases</h1>
+        </div>
+
+        <section class="content-panel">
+          <h2>Record a Purchase</h2>
+          <form id="purchaseForm">
+            <label>Supplier
+              <select name="supplier"
+                id="purchaseSupplier" required></select>
+            </label>
+
+            <label>Product
+              <select name="product"
+                id="purchaseProduct" required></select>
+            </label>
+
+            <label>Quantity Purchased
+              <input name="qty" type="number"
+                min="1" step="1" required>
+            </label>
+
+            <label>Unit Cost (₦)
+              <input name="cost" type="number"
+                min="0" step="0.01" required>
+            </label>
+
+            <label>Purchase Date
+              <input name="date" type="date">
+            </label>
+
+            <button type="submit">Save Purchase</button>
+          </form>
+        </section>
+
+        <section class="content-panel">
+          <h2>Purchase History</h2>
+          <div id="purchaseList"></div>
+        </section>
+      </section>
+
+      <!-- DELIVERIES -->
+      <section id="deliveries" class="page">
+        <div class="page-heading">
+          <h1>Delivery Management</h1>
+        </div>
+
+        <section class="content-panel">
+          <h2>Record Delivery</h2>
+          <form id="deliveryForm">
+            <label>Customer
+              <select name="customer"
+                id="deliveryCustomer" required></select>
+            </label>
+
+            <label>Driver / Delivery Person
+              <input name="driver" required>
+            </label>
+
+            <label>Delivery Details
+              <input name="details" required>
+            </label>
+
+            <label>Delivery Cost (₦)
+              <input name="cost" type="number"
+                min="0" step="0.01" value="0">
+            </label>
+
+            <label>Status
+              <select name="status">
+                <option value="Pending">Pending</option>
+                <option value="In Transit">In Transit</option>
+                <option value="Delivered">Delivered</option>
+              </select>
+            </label>
+
+            <button type="submit">Save Delivery</button>
+          </form>
+        </section>
+
+        <section class="content-panel">
+          <h2>Delivery Records</h2>
+          <div id="deliveryList"></div>
+        </section>
+      </section>
+
+      <!-- EXPENSES -->
+      <section id="expenses" class="page">
+        <div class="page-heading">
+          <h1>Business Expenses</h1>
+        </div>
+
+        <section class="content-panel">
+          <h2>Record Expense</h2>
+          <form id="expenseForm">
+            <label>Expense Description
+              <input name="description" required>
+            </label>
+
+            <label>Amount (₦)
+              <input name="amount" type="number"
+                min="0.01" step="0.01" required>
+            </label>
+
+            <label>Category
+              <select name="category">
+                <option value="Transport">Transport</option>
+                <option value="Fuel">Fuel</option>
+                <option value="Utilities">Utilities</option>
+                <option value="Salary">Salary</option>
+                <option value="Repairs">Repairs</option>
+                <option value="Other">Other</option>
+              </select>
+            </label>
+
+            <label>Date
+              <input name="date" type="date">
+            </label>
+
+            <button type="submit">Save Expense</button>
+          </form>
+        </section>
+
+        <section class="content-panel">
+          <h2>Expense History</h2>
+          <div id="expenseList"></div>
+        </section>
+      </section>
+            <!-- STAFF -->
+      <section id="staff" class="page">
+        <div class="page-heading">
+          <h1>Staff Records</h1>
+        </div>
+
+        <section class="content-panel">
+          <h2>Add Staff Member</h2>
+          <form id="staffForm">
+            <label>Full Name
+              <input name="name" required>
+            </label>
+            <label>Role
+              <input name="role" required>
+            </label>
+            <label>Phone Number
+              <input name="phone" type="tel">
+            </label>
+            <label>Salary (₦)
+              <input name="salary" type="number"
+                min="0" step="0.01" value="0">
+            </label>
+            <button type="submit">Save Staff Member</button>
+          </form>
+        </section>
+
+        <section class="content-panel">
+          <h2>Staff List</h2>
+          <div id="staffList"></div>
+        </section>
+      </section>
+
+      <!-- REPORTS -->
+      <section id="reports" class="page">
+        <div class="page-heading">
+          <h1>Financial Reports</h1>
+        </div>
+
+        <section class="content-panel">
+          <h2>Choose Report Period</h2>
+          <label>Start Date
+            <input id="reportStart" type="date">
+          </label>
+          <label>End Date
+            <input id="reportEnd" type="date">
+          </label>
+
+          <div class="button-row">
+            <button id="generateReport" type="button">
+              Generate Report
+            </button>
+            <button id="printReport" type="button" class="secondary">
+              Print Report
+            </button>
+            <button id="exportReport" type="button" class="secondary">
+              Export CSV
+            </button>
+          </div>
+        </section>
+
+        <section class="content-panel">
+          <h2>Report Results</h2>
+          <div id="reportOutput">
+            Choose a date range and generate your report.
+          </div>
+        </section>
+      </section>
+
+      <!-- SETTINGS -->
+      <section id="settings" class="page">
+        <div class="page-heading">
+          <h1>System Settings &amp; Backup</h1>
+        </div>
+
+        <section class="content-panel">
+          <h2>Business Details</h2>
+          <form id="businessForm">
+            <label>Business Name
+              <input id="businessName" name="name"
+                value="BANKLE DDI NIG LTD" required>
+            </label>
+            <label>Phone Number
+              <input id="businessPhone" name="phone" type="tel">
+            </label>
+            <label>Business Address
+              <input id="businessAddress" name="address">
+            </label>
+            <button type="submit">Save Business Details</button>
+          </form>
+        </section>
+
+        <section class="content-panel">
+          <h2>Data Backup &amp; Restore</h2>
+          <p>Download a backup regularly and keep it somewhere safe.</p>
+
+          <button type="button" id="backupButtonSettings">
+            Download Backup
+          </button>
+
+          <label class="file-label">
+            Restore from backup
+            <input type="file" id="restoreFile"
+              accept=".json,application/json">
+          </label>
+
+          <p id="backupStatus" role="status"></p>
+        </section>
+      </section>
+
+    </main>
+  </div>
+
+  <footer class="app-footer">
+    <span>BANKLE DDI NIG LTD</span>
+    <span>Drinks Distribution &amp; Wholesale</span>
+    <span>Offline Mode</span>
+  </footer>
+
+</div>
+
+<script src="app.js"></script>
+</body>
+</html>
